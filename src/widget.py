@@ -1,5 +1,7 @@
 # Модуль widget с функцией для обработки входных данных и применения маскировки
+
 from src.masks import mask_card_number, mask_account_number
+
 
 
 def universal_masking(input_data: str) -> str:
@@ -13,20 +15,17 @@ def universal_masking(input_data: str) -> str:
     str: Исходная строка с маскированным номером.
     """
     parts = input_data.split()
-    if parts[0] == "Счет":
+    if "Счет" in parts[0]:
         account_number = parts[-1]
         masked_number = mask_account_number(account_number)
         return f"{' '.join(parts[:-1])} {masked_number}"
     else:
-        card_number = ''.join(parts[-4:])
+        card_number = ''.join(parts[2:])
         if len(card_number) == 16:
             masked_number = mask_card_number(card_number)
-            return (
-                f"{' '.join(parts[:-4])} {masked_number[:4]} {masked_number[4:6]}"
-                f"** **** {masked_number[-4:]}"
-            )
+            return f"{' '.join(parts[:2])} {masked_number[:4]} {masked_number[4:6]}** **** {masked_number[-4:]}"
         else:
-            return f"{' '.join(parts[:-4])} Card number must be exactly 16 digits long"
+            return f"{' '.join(parts[:2])} Card number must be exactly 16 digits long"
 
 
 # Функция для преобразования строки с датой и временем в формате
