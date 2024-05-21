@@ -1,6 +1,7 @@
 import pytest
 from src.processing import filter_by_state, sort_by_date
 
+
 @pytest.fixture
 def sample_records():
     return [
@@ -9,6 +10,7 @@ def sample_records():
         {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
         {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
     ]
+
 
 def test_filter_by_state(sample_records):
     executed_records = filter_by_state(sample_records)
@@ -20,6 +22,7 @@ def test_filter_by_state(sample_records):
     assert len(canceled_records) == 2
     for record in canceled_records:
         assert record['state'] == 'CANCELED'
+
 
 @pytest.mark.parametrize("descending, expected_first_id", [
     (True, 41428829),

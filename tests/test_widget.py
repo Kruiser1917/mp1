@@ -1,4 +1,3 @@
-import pytest
 from src.widget import universal_masking, format_datetime_to_date
 
 def test_format_datetime_to_date():
