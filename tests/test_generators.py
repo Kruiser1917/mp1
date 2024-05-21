@@ -1,3 +1,5 @@
+# tests/test_generators.py
+
 import pytest
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
@@ -79,6 +81,7 @@ transactions = [
     }
 ]
 
+
 def test_filter_by_currency():
     usd_transactions = filter_by_currency(transactions, "USD")
     assert next(usd_transactions)["id"] == 939719570
@@ -87,6 +90,7 @@ def test_filter_by_currency():
 
     with pytest.raises(StopIteration):
         next(usd_transactions)
+
 
 def test_transaction_descriptions():
     descriptions = transaction_descriptions(transactions)
@@ -98,6 +102,7 @@ def test_transaction_descriptions():
 
     with pytest.raises(StopIteration):
         next(descriptions)
+
 
 def test_card_number_generator():
     card_numbers = card_number_generator(1, 5)
