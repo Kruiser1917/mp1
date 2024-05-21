@@ -1,29 +1,26 @@
 [tool.poetry]
-name = "pythonproject"
-version = "0.1.0"
-description = ""
-authors = ["aptik <aptik@DESKTOP-SVN8V0A>"]
-readme = "README.md"
+name = "your_project_name"
+version = "0.1.1"
+description = "Your project description"
+authors = ["Your Name <your.email@example.com>"]
 
-[tool.poetry.group.lint.dependencies]
-black = "^24.4.2"
-isort = "^5.13.2"
+[tool.poetry.dependencies]
+python = ">=3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+flake8 = "^3.9"
 mypy = "^1.10.0"
-flake8 = "^7.0.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-
-[tool.mypy]
-warn_return_any = true
-check_untyped_defs = true
-
+pytest-cov = "^5.0.0"
+# другие dev-зависимости
 
 [tool.black]
 line-length = 129
 
-
 [tool.isort]
-line_lenght = 119
+profile = "black"
+
+[tool.mypy]
+python_version = 3.8
+warn_return_any = true
+warn_unused_configs = true
